@@ -32,7 +32,7 @@ export default function DashboardPage() {
               Dashboard
             </a>
             <a
-              href="#"
+              href="/voters"
               className="flex items-center gap-3 px-3 py-3 rounded-lg text-primary-foreground/70 hover:bg-primary-foreground/10 hover:text-primary-foreground font-medium text-xs transition-colors"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -43,10 +43,10 @@ export default function DashboardPage() {
                   d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                 />
               </svg>
-              Voter Dashboard
+              Voter Database
             </a>
             <a
-              href="#"
+              href="/events"
               className="flex items-center gap-3 px-3 py-3 rounded-lg text-primary-foreground/70 hover:bg-primary-foreground/10 hover:text-primary-foreground font-medium text-xs transition-colors"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -60,7 +60,7 @@ export default function DashboardPage() {
               Campaign Events
             </a>
             <a
-              href="#"
+              href="/pledge-management"
               className="flex items-center gap-3 px-3 py-3 rounded-lg text-primary-foreground/70 hover:bg-primary-foreground/10 hover:text-primary-foreground font-medium text-xs transition-colors"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -74,7 +74,7 @@ export default function DashboardPage() {
               Pledge Management
             </a>
             <a
-              href="#"
+              href="/call-centre"
               className="flex items-center gap-3 px-3 py-3 rounded-lg text-primary-foreground/70 hover:bg-primary-foreground/10 hover:text-primary-foreground font-medium text-xs transition-colors"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -88,21 +88,7 @@ export default function DashboardPage() {
               Call Centre
             </a>
             <a
-              href="#"
-              className="flex items-center gap-3 px-3 py-3 rounded-lg text-primary-foreground/70 hover:bg-primary-foreground/10 hover:text-primary-foreground font-medium text-xs transition-colors"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-                />
-              </svg>
-              Communication Management
-            </a>
-            <a
-              href="#"
+              href="/field-agent"
               className="flex items-center gap-3 px-3 py-3 rounded-lg text-primary-foreground/70 hover:bg-primary-foreground/10 hover:text-primary-foreground font-medium text-xs transition-colors"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -116,7 +102,7 @@ export default function DashboardPage() {
               Field Agents
             </a>
             <a
-              href="#"
+              href="/reports"
               className="flex items-center gap-3 px-3 py-3 rounded-lg text-primary-foreground/70 hover:bg-primary-foreground/10 hover:text-primary-foreground font-medium text-xs transition-colors"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -130,7 +116,7 @@ export default function DashboardPage() {
               Reports
             </a>
             <a
-              href="#"
+              href="/zero-day"
               className="flex items-center gap-3 px-3 py-3 rounded-lg text-primary-foreground/70 hover:bg-primary-foreground/10 hover:text-primary-foreground font-medium text-xs transition-colors"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

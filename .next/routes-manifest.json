@@ -33,10 +33,28 @@
       "namedRegex": "^/_not\\-found(?:/)?$"
     },
     {
+      "page": "/call-centre",
+      "regex": "^/call\\-centre(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/call\\-centre(?:/)?$"
+    },
+    {
+      "page": "/events",
+      "regex": "^/events(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/events(?:/)?$"
+    },
+    {
       "page": "/not-found",
       "regex": "^/not\\-found(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/not\\-found(?:/)?$"
+    },
+    {
+      "page": "/pledge-management",
+      "regex": "^/pledge\\-management(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/pledge\\-management(?:/)?$"
     },
     {
       "page": "/voters",
