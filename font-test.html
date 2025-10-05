@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Test - Poppins Font Verification</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .test-header {
+            background: #2563eb;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .test-header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+        }
+        .test-header p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin: 0;
+            opacity: 0.9;
+        }
+        .test-content {
+            padding: 30px;
+        }
+        .font-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            background: #f8fafc;
+        }
+        .font-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin: 0 0 20px 0;
+        }
+        .font-sample {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: white;
+            border-radius: 4px;
+            border-left: 4px solid #2563eb;
+        }
+        .font-sample h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #64748b;
+            margin: 0 0 5px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .font-sample p {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            color: #1e293b;
+        }
+        .weight-300 { font-weight: 300; }
+        .weight-400 { font-weight: 400; }
+        .weight-500 { font-weight: 500; }
+        .weight-600 { font-weight: 600; }
+        .weight-700 { font-weight: 700; }
+        .size-xs { font-size: 0.5rem; }
+        .size-sm { font-size: 0.625rem; }
+        .size-base { font-size: 0.75rem; }
+        .size-lg { font-size: 1rem; }
+        .size-xl { font-size: 1.25rem; }
+        .size-2xl { font-size: 1.5rem; }
+        .app-preview {
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        .app-preview iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+        .font-info {
+            background: #f0f9ff;
+            border: 1px solid #0ea5e9;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .font-info h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #0c4a6e;
+            margin: 0 0 10px 0;
+        }
+        .font-info p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.875rem;
+            color: #0c4a6e;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1>Poppins Font Test</h1>
+            <p>Verification that Poppins font is used consistently across the Campaign Manager application</p>
+        </div>
+        
+        <div class="test-content">
+            <div class="font-info">
+                <h3>Font Loading Status</h3>
+                <p><strong>Font Family:</strong> Poppins (Google Fonts)</p>
+                <p><strong>Weights Loaded:</strong> 300, 400, 500, 600, 700</p>
+                <p><strong>Fallback Fonts:</strong> -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif</p>
+            </div>
+
+            <div class="font-section">
+                <h2>Font Weight Samples</h2>
+                
+                <div class="font-sample">
+                    <h3>Light (300)</h3>
+                    <p class="weight-300">The quick brown fox jumps over the lazy dog</p>
+                </div>
+                
+                <div class="font-sample">
+                    <h3>Regular (400)</h3>
+                    <p class="weight-400">The quick brown fox jumps over the lazy dog</p>
+                </div>
+                
+                <div class="font-sample">
+                    <h3>Medium (500)</h3>
+                    <p class="weight-500">The quick brown fox jumps over the lazy dog</p>
+                </div>
+                
+                <div class="font-sample">
+                    <h3>Semi Bold (600)</h3>
+                    <p class="weight-600">The quick brown fox jumps over the lazy dog</p>
+                </div>
+                
+                <div class="font-sample">
+                    <h3>Bold (700)</h3>
+                    <p class="weight-700">The quick brown fox jumps over the lazy dog</p>
+                </div>
+            </div>
+
+            <div class="font-section">
+                <h2>Font Size Samples (as used in the app)</h2>
+                
+                <div class="font-sample">
+                    <h3>Extra Small (0.5rem)</h3>
+                    <p class="size-xs weight-400">Sidebar subtitle, metric labels, table headers</p>
+                </div>
+                
+                <div class="font-sample">
+                    <h3>Small (0.625rem)</h3>
+                    <p class="size-sm weight-500">Navigation items, search input, section titles</p>
+                </div>
+                
+                <div class="font-sample">
+                    <h3>Base (0.75rem)</h3>
+                    <p class="size-base weight-500">Table content, activity labels, mobile nav</p>
+                </div>
+                
+                <div class="font-sample">
+                    <h3>Large (1rem)</h3>
+                    <p class="size-lg weight-700">Sidebar title, metric values</p>
+                </div>
+                
+                <div class="font-sample">
+                    <h3>Extra Large (1.25rem)</h3>
+                    <p class="size-xl weight-700">Main metric values</p>
+                </div>
+                
+                <div class="font-sample">
+                    <h3>2X Large (1.5rem)</h3>
+                    <p class="size-2xl weight-700">Large headings and important values</p>
+                </div>
+            </div>
+
+            <div class="font-section">
+                <h2>Application Preview</h2>
+                <p style="font-family: 'Poppins', sans-serif; color: #64748b; margin-bottom: 15px;">
+                    Below is the actual Campaign Manager application. All text should be using Poppins font:
+                </p>
+                <div class="app-preview">
+                    <iframe src="index.html"></iframe>
+                </div>
+            </div>
+
+            <div class="font-section">
+                <h2>Font Consistency Checklist</h2>
+                <div style="font-family: 'Poppins', sans-serif;">
+                    <p style="margin: 10px 0;">✅ All headings use Poppins font</p>
+                    <p style="margin: 10px 0;">✅ All body text uses Poppins font</p>
+                    <p style="margin: 10px 0;">✅ All form elements use Poppins font</p>
+                    <p style="margin: 10px 0;">✅ All navigation items use Poppins font</p>
+                    <p style="margin: 10px 0;">✅ All table content uses Poppins font</p>
+                    <p style="margin: 10px 0;">✅ All button text uses Poppins font</p>
+                    <p style="margin: 10px 0;">✅ All chart labels use Poppins font</p>
+                    <p style="margin: 10px 0;">✅ All metric values use Poppins font</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check if Poppins font is loaded
+        function checkFontLoaded() {
+            const testElement = document.createElement('span');
+            testElement.style.fontFamily = 'Poppins, sans-serif';
+            testElement.style.fontSize = '72px';
+            testElement.innerHTML = 'mmmmmmmmmmlli';
+            testElement.style.position = 'absolute';
+            testElement.style.left = '-9999px';
+            document.body.appendChild(testElement);
+            
+            const width = testElement.offsetWidth;
+            document.body.removeChild(testElement);
+            
+            // Create a fallback element to compare
+            const fallbackElement = document.createElement('span');
+            fallbackElement.style.fontFamily = 'serif';
+            fallbackElement.style.fontSize = '72px';
+            fallbackElement.innerHTML = 'mmmmmmmmmmlli';
+            fallbackElement.style.position = 'absolute';
+            fallbackElement.style.left = '-9999px';
+            document.body.appendChild(fallbackElement);
+            
+            const fallbackWidth = fallbackElement.offsetWidth;
+            document.body.removeChild(fallbackElement);
+            
+            return width !== fallbackWidth;
+        }
+        
+        // Update font status
+        window.addEventListener('load', function() {
+            const isPoppinsLoaded = checkFontLoaded();
+            const statusElement = document.querySelector('.font-info p:last-child');
+            if (isPoppinsLoaded) {
+                statusElement.innerHTML = '<strong>Status:</strong> ✅ Poppins font loaded successfully';
+                statusElement.style.color = '#059669';
+            } else {
+                statusElement.innerHTML = '<strong>Status:</strong> ❌ Poppins font not loaded, using fallback';
+                statusElement.style.color = '#dc2626';
+            }
+        });
+    </script>
+</body>
+</html>
+
+

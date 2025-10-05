@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Test - Campaign Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .test-header {
+            background: #2563eb;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .test-content {
+            padding: 20px;
+        }
+        .breakpoint-info {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .breakpoint-info h3 {
+            margin: 0 0 10px 0;
+            color: #1e293b;
+        }
+        .breakpoint-info p {
+            margin: 5px 0;
+            color: #64748b;
+        }
+        .iframe-container {
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        .iframe-container iframe {
+            width: 100%;
+            border: none;
+            display: block;
+        }
+        .size-label {
+            background: #2563eb;
+            color: white;
+            padding: 8px 12px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .test-buttons {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        .test-button {
+            padding: 10px 20px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .test-button:hover {
+            background: #1d4ed8;
+        }
+        .test-button.active {
+            background: #059669;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1>Campaign Manager - Responsive Design Test</h1>
+            <p>Test the application at different screen sizes</p>
+        </div>
+        
+        <div class="test-content">
+            <div class="breakpoint-info">
+                <h3>Responsive Breakpoints</h3>
+                <p><strong>Mobile:</strong> &lt; 768px (Bottom navigation)</p>
+                <p><strong>Tablet:</strong> 768px - 1024px (Compact sidebar)</p>
+                <p><strong>Desktop:</strong> &gt; 1024px (Full sidebar)</p>
+                <p><strong>Extra Small:</strong> &lt; 480px (Ultra-compact layout)</p>
+            </div>
+
+            <div class="test-buttons">
+                <button class="test-button" onclick="setSize(320, 568)">iPhone SE (320x568)</button>
+                <button class="test-button" onclick="setSize(375, 667)">iPhone 8 (375x667)</button>
+                <button class="test-button" onclick="setSize(414, 896)">iPhone 11 (414x896)</button>
+                <button class="test-button" onclick="setSize(768, 1024)">iPad (768x1024)</button>
+                <button class="test-button" onclick="setSize(1024, 768)">iPad Landscape (1024x768)</button>
+                <button class="test-button" onclick="setSize(1200, 800)">Desktop (1200x800)</button>
+                <button class="test-button" onclick="setSize(1920, 1080)">Large Desktop (1920x1080)</button>
+                <button class="test-button active" onclick="setSize('100%', '100%')">Full Size</button>
+            </div>
+
+            <div class="iframe-container">
+                <div class="size-label" id="sizeLabel">Full Size</div>
+                <iframe id="appFrame" src="index.html" width="100%" height="600"></iframe>
+            </div>
+
+            <div class="breakpoint-info">
+                <h3>Test Instructions</h3>
+                <p>1. Click the buttons above to test different screen sizes</p>
+                <p>2. Check that the sidebar appears/disappears correctly</p>
+                <p>3. Verify that mobile navigation shows on small screens</p>
+                <p>4. Ensure all content fits within the viewport</p>
+                <p>5. Test that text and components are appropriately sized</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function setSize(width, height) {
+            const iframe = document.getElementById('appFrame');
+            const label = document.getElementById('sizeLabel');
+            
+            if (width === '100%' && height === '100%') {
+                iframe.style.width = '100%';
+                iframe.style.height = '600px';
+                label.textContent = 'Full Size';
+            } else {
+                iframe.style.width = width + 'px';
+                iframe.style.height = height + 'px';
+                label.textContent = `${width}x${height}`;
+            }
+            
+            // Update active button
+            document.querySelectorAll('.test-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // Auto-resize iframe based on content
+        window.addEventListener('message', function(event) {
+            if (event.data.type === 'resize') {
+                const iframe = document.getElementById('appFrame');
+                iframe.style.height = event.data.height + 'px';
+            }
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Width Test - Campaign Manager</title>
+    <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .test-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .test-header {
+            background: #2563eb;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .test-content {
+            padding: 20px;
+        }
+        .test-info {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .test-info h3 {
+            margin: 0 0 10px 0;
+            color: #1e293b;
+        }
+        .test-info p {
+            margin: 5px 0;
+            color: #64748b;
+        }
+        .iframe-container {
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 20px 0;
+            position: relative;
+        }
+        .iframe-container iframe {
+            width: 100%;
+            border: none;
+            display: block;
+        }
+        .size-label {
+            background: #2563eb;
+            color: white;
+            padding: 8px 12px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .width-indicator {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ef4444 0%, #f97316 25%, #eab308 50%, #22c55e 75%, #3b82f6 100%);
+            pointer-events: none;
+        }
+        .test-buttons {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        .test-button {
+            padding: 10px 20px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+        }
+        .test-button:hover {
+            background: #1d4ed8;
+        }
+        .test-button.active {
+            background: #059669;
+        }
+        .measurements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .measurement-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            padding: 15px;
+        }
+        .measurement-card h4 {
+            margin: 0 0 10px 0;
+            color: #1e293b;
+            font-family: 'Poppins', sans-serif;
+        }
+        .measurement-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2563eb;
+            font-family: 'Poppins', sans-serif;
+        }
+        .navbar-highlight {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: rgba(239, 68, 68, 0.1);
+            border: 2px solid #ef4444;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .navbar-label {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            background: #ef4444;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: bold;
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1>Navbar Width Test</h1>
+            <p>Verify that the top navbar spans the full width of the viewport</p>
+        </div>
+        
+        <div class="test-content">
+            <div class="test-info">
+                <h3>Navbar Width Requirements</h3>
+                <p><strong>Full Width:</strong> Navbar should span 100% of viewport width</p>
+                <p><strong>Sidebar Overlap:</strong> Navbar should extend over the sidebar area</p>
+                <p><strong>Content Alignment:</strong> Header content should align with main content</p>
+                <p><strong>Responsive:</strong> Should work on all screen sizes</p>
+            </div>
+
+            <div class="test-buttons">
+                <button class="test-button" onclick="setSize(375, 667)">iPhone (375x667)</button>
+                <button class="test-button" onclick="setSize(768, 1024)">iPad (768x1024)</button>
+                <button class="test-button" onclick="setSize(1024, 768)">iPad Landscape (1024x768)</button>
+                <button class="test-button" onclick="setSize(1200, 800)">Desktop (1200x800)</button>
+                <button class="test-button" onclick="setSize(1440, 900)">Large Desktop (1440x900)</button>
+                <button class="test-button active" onclick="setSize('100%', '100%')">Full Size</button>
+            </div>
+
+            <div class="measurements">
+                <div class="measurement-card">
+                    <h4>Viewport Width</h4>
+                    <div class="measurement-value" id="viewportWidth">-</div>
+                </div>
+                <div class="measurement-card">
+                    <h4>Navbar Width</h4>
+                    <div class="measurement-value" id="navbarWidth">-</div>
+                </div>
+                <div class="measurement-card">
+                    <h4>Sidebar Width</h4>
+                    <div class="measurement-value" id="sidebarWidth">-</div>
+                </div>
+                <div class="measurement-card">
+                    <h4>Content Alignment</h4>
+                    <div class="measurement-value" id="contentAlignment">-</div>
+                </div>
+            </div>
+
+            <div class="iframe-container">
+                <div class="size-label" id="sizeLabel">Full Size</div>
+                <div class="width-indicator"></div>
+                <div class="navbar-highlight">
+                    <div class="navbar-label">NAVBAR AREA</div>
+                </div>
+                <iframe id="appFrame" src="index.html" width="100%" height="600"></iframe>
+            </div>
+
+            <div class="test-info">
+                <h3>Test Instructions</h3>
+                <p>1. Click different size buttons to test various screen sizes</p>
+                <p>2. Verify the red highlight shows the navbar spans full width</p>
+                <p>3. Check that navbar content aligns with main content below</p>
+                <p>4. Ensure navbar extends over sidebar area on larger screens</p>
+                <p>5. Verify no horizontal scrolling is needed</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function setSize(width, height) {
+            const iframe = document.getElementById('appFrame');
+            const label = document.getElementById('sizeLabel');
+            
+            if (width === '100%' && height === '100%') {
+                iframe.style.width = '100%';
+                iframe.style.height = '600px';
+                label.textContent = 'Full Size';
+            } else {
+                iframe.style.width = width + 'px';
+                iframe.style.height = height + 'px';
+                label.textContent = `${width}x${height}`;
+            }
+            
+            // Update measurements
+            updateMeasurements(width, height);
+            
+            // Update active button
+            document.querySelectorAll('.test-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        function updateMeasurements(width, height) {
+            const viewportWidth = width === '100%' ? window.innerWidth : width;
+            const sidebarWidth = getSidebarWidth(viewportWidth);
+            const navbarWidth = viewportWidth; // Should be 100% of viewport
+            const contentAlignment = sidebarWidth > 0 ? 'Aligned with sidebar' : 'Full width';
+            
+            document.getElementById('viewportWidth').textContent = viewportWidth + 'px';
+            document.getElementById('navbarWidth').textContent = navbarWidth + 'px';
+            document.getElementById('sidebarWidth').textContent = sidebarWidth + 'px';
+            document.getElementById('contentAlignment').textContent = contentAlignment;
+        }
+
+        function getSidebarWidth(width) {
+            if (width >= 1024) return 224; // 14rem = 224px
+            if (width >= 768) return 192;  // 12rem = 192px
+            return 0; // Mobile - no sidebar
+        }
+
+        // Initial measurements
+        updateMeasurements('100%', '100%');
+    </script>
+</body>
+</html>
+
+

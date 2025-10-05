@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Test - Campaign Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .test-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .test-header {
+            background: #2563eb;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .test-content {
+            padding: 20px;
+        }
+        .layout-info {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .layout-info h3 {
+            margin: 0 0 10px 0;
+            color: #1e293b;
+        }
+        .layout-info p {
+            margin: 5px 0;
+            color: #64748b;
+        }
+        .iframe-container {
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 20px 0;
+            position: relative;
+        }
+        .iframe-container iframe {
+            width: 100%;
+            border: none;
+            display: block;
+        }
+        .size-label {
+            background: #2563eb;
+            color: white;
+            padding: 8px 12px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .margin-indicator {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 32px;
+            height: 100%;
+            background: rgba(239, 68, 68, 0.2);
+            border-left: 2px solid #ef4444;
+            pointer-events: none;
+        }
+        .margin-label {
+            position: absolute;
+            top: 50%;
+            right: -40px;
+            transform: translateY(-50%);
+            background: #ef4444;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .test-buttons {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        .test-button {
+            padding: 10px 20px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .test-button:hover {
+            background: #1d4ed8;
+        }
+        .test-button.active {
+            background: #059669;
+        }
+        .measurements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .measurement-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            padding: 15px;
+        }
+        .measurement-card h4 {
+            margin: 0 0 10px 0;
+            color: #1e293b;
+        }
+        .measurement-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1>Campaign Manager - Layout Test</h1>
+            <p>Verify content fits within main frame with sidebar and 32px right margin</p>
+        </div>
+        
+        <div class="test-content">
+            <div class="layout-info">
+                <h3>Layout Requirements</h3>
+                <p><strong>Desktop:</strong> 14rem sidebar + main content + 32px right margin</p>
+                <p><strong>Tablet:</strong> 12rem sidebar + main content + 32px right margin</p>
+                <p><strong>Mobile:</strong> No sidebar + main content + 32px right margin</p>
+                <p><strong>Extra Small:</strong> No sidebar + main content + 16px right margin</p>
+            </div>
+
+            <div class="test-buttons">
+                <button class="test-button" onclick="setSize(375, 667)">iPhone (375x667)</button>
+                <button class="test-button" onclick="setSize(768, 1024)">iPad (768x1024)</button>
+                <button class="test-button" onclick="setSize(1024, 768)">iPad Landscape (1024x768)</button>
+                <button class="test-button" onclick="setSize(1200, 800)">Desktop (1200x800)</button>
+                <button class="test-button" onclick="setSize(1440, 900)">Large Desktop (1440x900)</button>
+                <button class="test-button active" onclick="setSize('100%', '100%')">Full Size</button>
+            </div>
+
+            <div class="measurements">
+                <div class="measurement-card">
+                    <h4>Available Width</h4>
+                    <div class="measurement-value" id="availableWidth">-</div>
+                </div>
+                <div class="measurement-card">
+                    <h4>Sidebar Width</h4>
+                    <div class="measurement-value" id="sidebarWidth">-</div>
+                </div>
+                <div class="measurement-card">
+                    <h4>Main Content Width</h4>
+                    <div class="measurement-value" id="mainContentWidth">-</div>
+                </div>
+                <div class="measurement-card">
+                    <h4>Right Margin</h4>
+                    <div class="measurement-value" id="rightMargin">32px</div>
+                </div>
+            </div>
+
+            <div class="iframe-container">
+                <div class="size-label" id="sizeLabel">Full Size</div>
+                <div class="margin-indicator">
+                    <div class="margin-label">32px</div>
+                </div>
+                <iframe id="appFrame" src="index.html" width="100%" height="600"></iframe>
+            </div>
+
+            <div class="layout-info">
+                <h3>Test Instructions</h3>
+                <p>1. Click different size buttons to test various screen sizes</p>
+                <p>2. Verify the red margin indicator shows 32px from the right edge</p>
+                <p>3. Check that all content fits within the main frame</p>
+                <p>4. Ensure the sidebar appears/disappears correctly</p>
+                <p>5. Verify no horizontal scrolling is needed</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function setSize(width, height) {
+            const iframe = document.getElementById('appFrame');
+            const label = document.getElementById('sizeLabel');
+            
+            if (width === '100%' && height === '100%') {
+                iframe.style.width = '100%';
+                iframe.style.height = '600px';
+                label.textContent = 'Full Size';
+            } else {
+                iframe.style.width = width + 'px';
+                iframe.style.height = height + 'px';
+                label.textContent = `${width}x${height}`;
+            }
+            
+            // Update measurements
+            updateMeasurements(width, height);
+            
+            // Update active button
+            document.querySelectorAll('.test-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        function updateMeasurements(width, height) {
+            const availableWidth = width === '100%' ? window.innerWidth : width;
+            const sidebarWidth = getSidebarWidth(availableWidth);
+            const mainContentWidth = availableWidth - sidebarWidth - 32; // 32px right margin
+            
+            document.getElementById('availableWidth').textContent = availableWidth + 'px';
+            document.getElementById('sidebarWidth').textContent = sidebarWidth + 'px';
+            document.getElementById('mainContentWidth').textContent = mainContentWidth + 'px';
+        }
+
+        function getSidebarWidth(width) {
+            if (width >= 1024) return 224; // 14rem = 224px
+            if (width >= 768) return 192;  // 12rem = 192px
+            return 0; // Mobile - no sidebar
+        }
+
+        // Initial measurements
+        updateMeasurements('100%', '100%');
+    </script>
+</body>
+</html>
+
